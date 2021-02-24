@@ -2,3 +2,7 @@ input {
   width: 100%;
   margin-bottom: 1rem;
 }
+
+img {
+  width: 200px;
+}
