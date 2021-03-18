@@ -9,11 +9,14 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [allEntry, setAllEntry] = useState([]);
   const [notes, getNotes] = useState([]);
+  const [image, setImage] = useState(false);
 
   const show = () => {
     setCount(!count);
   };
-
+  const getImage = ()=> {
+      setImage(!image)
+  };
   const submit = e => {
     e.preventDefault();
     const newEntry = { name: name, email: email };
@@ -36,6 +39,7 @@ const Form = () => {
     <div>
       <h1> this is form </h1>
       <GoGlobe onClick={show} />
+      <button onClick={getImage}> Get Data</button>
       {count && (
         <>
           <form onSubmit={submit}>
@@ -66,14 +70,21 @@ const Form = () => {
         })}
       </div>
       <div>
-        {notes.map((res, i) => {
+      {
+        image && (
+          <>
+            {notes.map((res, i) => {
           return (
             <li key={i}>
               <p> {res.id}</p>
               <img src={res.url} alt={res.title}/>
             </li>
           );
-        })}
+         })}
+          </>
+        )
+      }
+       
       </div>
     </div>
   );
